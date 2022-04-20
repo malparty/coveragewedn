@@ -23,7 +23,7 @@ jobs:
         run: npm run lint
 
       - name: Run unit tests
-        run: npm run test --coverage
+        run: npm test -- --coverage
 
       - name: Run integration tests
         run: npm run cypress
