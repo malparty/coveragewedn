@@ -32,7 +32,7 @@ jobs:
         run: npm run test:merge-coverage
 
       - name: Danger
-        run: npm run danger ci
+        run: npx danger ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
