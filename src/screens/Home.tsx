@@ -6,12 +6,23 @@ import logo from 'assets/images/logo.svg';
 const HomeScreen = (): JSX.Element => {
   const { t } = useTranslation();
 
+  const onClick = () => {
+    console.log('This line is not covered!');
+  };
+
   return (
     <div className="app">
       <header className="app-header">
         <img src={logo} className="app-logo" alt="logo" />
         <p>{t('sample_page.message', { codeSample: '<code>src/App.tsx</code>' })}</p>
-        <a className="app-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer" data-test-id="app-link">
+        <a
+          className="app-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-test-id="app-link"
+          onClick={onClick}
+        >
           {t('sample_page.learn_react')}
         </a>
       </header>
