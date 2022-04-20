@@ -10,7 +10,7 @@ schedule(
     customFailureMessage: 'Coverage is a little low, take a look',
 
     // How to sort the entries in the table
-    entrySortMethod: 'alphabetically', // || "least-coverage" || "most-coverage" || "largest-file-size" ||"smallest-file-size" || "uncovered-lines"
+    entrySortMethod: 'least-coverage', // || 'alphabetically' || 'most-coverage' || 'largest-file-size' ||'smallest-file-size' || 'uncovered-lines'
 
     // Add a maximum number of entries to display
     numberOfEntries: 15,
