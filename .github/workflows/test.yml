@@ -1,12 +1,17 @@
 name: Test
 
-on: push
+on: pull_request
 
 jobs:
   test:
     name: Run linters and tests
     runs-on: ubuntu-latest
     steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -23,14 +28,15 @@ jobs:
         run: npm run lint
 
       - name: Run unit tests
-        run: npm run test
+        run: npm test -- --coverage
 
       - name: Run integration tests
         run: npm run cypress
 
       - name: Merge code coverage reports
-        run: npm run test:coverage
+        run: npm run test:merge-coverage
 
       - name: Danger
-        run: npm run danger ci
-        env: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
